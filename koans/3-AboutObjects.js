@@ -100,7 +100,7 @@ describe("3. About Objects", function () {
     function MyPrototype(argument) {
       this.prop1= {simple: "object"};
       this.prop2= argument;
-      return FILL_ME_IN;
+      return ;
     }
     var myNewObject = new MyPrototype("initial value");
 

@@ -64,7 +64,7 @@ describe("5. About Higher Order Functions", function () {
     // return a list of everyone's age
     var people = [{name: "bob", age: 41}, {name: "jane", age: 22},{name: "janet", age: 47},{name: "louis", age: 35}];
     var names = people.map(function(x) {
-      return FILL_ME_IN;
+      return x.age;
     });
 
     expect(names).toEqual([41, 22, 47, 35]);
@@ -77,8 +77,8 @@ describe("5. About Higher Order Functions", function () {
     // arrayDiff([1,2,2,2,3],[2]) == [1,3]
 
     var arrayDiff = function(array1, array2) {
-      return array1.filter(function(item){
-        return array2.every(item2 =>  item != item2)
+      return array1.filter(function(x){
+        return array2.every(item2 =>  x != item2)
       });
     };
 
@@ -93,15 +93,25 @@ describe("5. About Higher Order Functions", function () {
     // turn the array back into a string
 
     var jadenCase = function(string){
-      return FILL_ME_IN;
+
+        string= string.split(" ").map(function(x){
+        return (x.charAt(0).toUpperCase() + x.slice(1))
+      });
+      return string.join(" ");
+
     };
 
     expect(jadenCase("How can mirrors be real if our eyes aren't real")).toEqual("How Can Mirrors Be Real If Our Eyes Aren't Real");
   });
 
+
+
+
   it("can write your own filter function using a for loop", function() {
     var myFilter = function(arr, func){
+
       var newArray=[];
+
       for(var i =0; i < arr.length; i++) {
         var arrayItem = arr[i];
         if(func(arrayItem)){
@@ -114,13 +124,19 @@ describe("5. About Higher Order Functions", function () {
     expect(myFilter([1,2,3], (i) => i > 2)).toEqual([3]);
   });
 
+
   it("can write your own map function using forEach", function() {
     var myMap = function(arr, func){
-      arr.forEach(function(arrayItem) {
-        return FILL_ME_IN;
+
+      var newArray= [];
+      arr.forEach(function(arrayItem){
+        newArray.push(func(arrayItem));
       });
-    };
-//lambda function
+      
+
+     return newArray;
+   };
+
     expect(myMap([1,2,3], (i) => i + 2)).toEqual([3,4,5]);
   });
 });

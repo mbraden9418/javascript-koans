@@ -30,16 +30,27 @@ describe("7. About Applying What We Have Learnt", function() {
       }
     }
 
-    expect(productsICanEat.length).toBe(FILL_ME_IN);
+    expect(productsICanEat.length).toBe(1);
   });
 
-  it("given I'm allergic to nuts and hate mushrooms, it should find a pizza I can eat (functional)", function () {
+  it("given I'm allergic to nuts and hate mushrooms, it should find a pizz I can eat (functional)", function () {
 
     var productsICanEat = [];
 
-    /* solve using filter() & some() / every() */
+    var noMushrooms= function(x){
+      return x.ingredients !== "mushrooms";
+    }
 
-    expect(productsICanEat.length).toBe(FILL_ME_IN);
+    var productsNoNuts= products.filter(function(products){
+      return products.containsNuts===false;
+    });
+
+
+    if (productsNoNuts.every(noMushrooms)===true){
+      productsICanEat.push(productsNoNuts);
+    };
+
+    expect(productsICanEat.length).toBe(1);
   });
   /*********************************************************************************/
 
@@ -47,13 +58,25 @@ describe("7. About Applying What We Have Learnt", function() {
   it("should find the largest palindrome made from the product of two 3 digit numbers", function () {
     var isPalidrome = function(item) {
       // a palindrome is a string that is the same forwards and backwards
-      return FILL_ME_IN;
+      return item=== item.split('').reverse().join('');
     };
 
+console.log(isPalidrome("333"));
+
     var largestPalidrome = function() {
-      var listOfAllThreeDigitNumbers = [FILL_ME_IN];
+      var listOfAllThreeDigitNumbers = [];
+      for (var i=0; i<1000; i++){
+        listOfAllThreeDigitNumbers.push(i);
+      }
+      console.log(listOfAllThreeDigitNumbers);
+
+var listOfProducts=[];
+
+      for(i=0; i<1000;i++){
+        listOfProducts.push(i*listOfAllThreeDigitNumbers)
+      }
       return FILL_ME_IN;
-    }();
+    };
 
     expect(largestPalidrome()).toBe(906609);
   });
